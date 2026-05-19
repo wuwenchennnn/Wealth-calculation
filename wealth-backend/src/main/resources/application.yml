@@ -1,0 +1,49 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: wealth-backend
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL:jdbc:mysql://127.0.0.1:3306/wealth_fortune?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:}
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/*.xml
+
+audit:
+  daily-limit: 5
+  burst-limit: 20
+  cache-expire-minutes: 1440
+
+ai:
+  provider: deepseek
+  endpoint: https://api.deepseek.com/chat/completions
+  api-key: ${DEEPSEEK_API_KEY:}
+  model: deepseek-v4-flash
+  connect-timeout-ms: 5000
+  read-timeout-ms: 90000
+
+wechat:
+  app-id: ${WECHAT_APP_ID:}
+  app-secret: ${WECHAT_APP_SECRET:}
+
+ads:
+  reward-ad-unit-id: adunit-demo-reward
+  interstitial-ad-unit-id: adunit-demo-interstitial
+  banner-ad-unit-id: adunit-demo-banner
+
+logging:
+  level:
+    com.fortune: info

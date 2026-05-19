@@ -1,0 +1,47 @@
+{
+  "pages": [
+    {
+      "path": "pages/home/index",
+      "style": {
+        "navigationBarTitleText": "人生财富宿命测算",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/form/index",
+      "style": {
+        "navigationBarTitleText": "信息录入"
+      }
+    },
+    {
+      "path": "pages/loading/index",
+      "style": {
+        "navigationBarTitleText": "AI测算中"
+      }
+    },
+    {
+      "path": "pages/report/index",
+      "style": {
+        "navigationBarTitleText": "测算报告"
+      }
+    },
+    {
+      "path": "pages/poster/index",
+      "style": {
+        "navigationBarTitleText": "分享海报"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "人生财富宿命测算",
+    "navigationBarBackgroundColor": "#111321",
+    "backgroundColor": "#111321"
+  },
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^u-(.*)": "uview-plus/components/u-$1/u-$1.vue"
+    }
+  }
+}
