@@ -9,8 +9,8 @@
       </picker>
       <view class="city-tip">未列出的城市请选择“其他城市”，将按普通城市生活成本保守估算。</view>
       <input v-model.number="form.age" class="input" type="number" placeholder="年龄" />
-      <input v-model.number="form.salary" class="input" type="digit" placeholder="税后月收入" />
-      <input v-model.number="form.money" class="input" type="digit" placeholder="当前存款" />
+      <input v-model.number="form.salary" class="input" type="digit" placeholder="税后月收入（元）" />
+      <input v-model.number="form.money" class="input" type="digit" placeholder="当前存款（元）" />
       <picker :range="consumeOptions" @change="onConsumeChange">
         <view :class="['input', !form.consume && 'placeholder']">{{ form.consume || '每月消费档位' }}</view>
       </picker>

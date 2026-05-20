@@ -1,9 +1,9 @@
 <template>
   <view class="container home">
     <view class="hero">
-      <view class="tag">青年趣味财富测算 · 娱乐参考</view>
-      <view class="title">人生财富宿命测算</view>
-      <view class="desc">无需登录，输入6项极简信息，AI结合城市生活成本，生成你的专属财富宿命报告。</view>
+      <view class="tag">人生财富报告 - 智能推算</view>
+      <view class="title">AI财富画像</view>
+      <view class="desc">无需登录，输入6项极简信息，AI结合城市生活成本，生成你的专属财富报告。</view>
     </view>
 
     <view class="card panel">
