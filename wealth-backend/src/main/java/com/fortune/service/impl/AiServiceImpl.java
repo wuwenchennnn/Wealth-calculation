@@ -47,9 +47,9 @@ public class AiServiceImpl implements AiService {
             }
             log.warn("DeepSeek report generation failed. statusCode={}, message={}, detail={}",
                     result.getStatusCode(), result.getMessage(), result.getDetail());
-            return mockReport(request) + "\n\nAI 服务调用失败，已自动回退到本地测算模板。失败原因：" + result.getMessage();
+            return mockReport(request) + "\n\nAI 服务调用失败，已自动回退到本地画像报告模板。失败原因：" + result.getMessage();
         }
-        return mockReport(request) + "\n\n当前 AI provider 未识别，已自动回退到本地 mock 报告。";
+        return mockReport(request) + "\n\n当前 AI provider 未识别，已自动回退到本地画像报告。";
     }
 
     @Override
@@ -80,7 +80,7 @@ public class AiServiceImpl implements AiService {
             JSONArray messages = new JSONArray();
             JSONObject systemMessage = new JSONObject();
             systemMessage.put("role", "system");
-            systemMessage.put("content", "你是一名专业的青年财富趣味测算师，输出内容要年轻化、真实、有共情，且仅作娱乐参考，禁止金融建议和封建迷信。");
+            systemMessage.put("content", "你是一名专业的 AI 趣味人生画像助手，输出内容要年轻化、有趣、有共情，且仅供休闲娱乐与自我观察，禁止专业诊断、金融建议、封建迷信和收益承诺。");
             messages.add(systemMessage);
 
             JSONObject userMessage = new JSONObject();
@@ -159,30 +159,33 @@ public class AiServiceImpl implements AiService {
     }
 
     private String mockReport(CalculateRequest request) {
-        int winRate = Math.min(92, Math.max(18, request.getSalary().intValue() / 350 + request.getMoney().intValue() / 5000));
-        int downPaymentAge = Math.min(55, request.getAge() + Math.max(3, 12 - request.getSalary().intValue() / 3000));
-        int flatAge = Math.min(60, downPaymentAge + 8);
-        int shineAge = Math.min(58, request.getAge() + 5);
+        String city = request.getCity();
+        String status = request.getCurrentStatus();
+        String savings = request.getExistingSavings();
         return """
-                1. 【财富命格判定】
-                你的财富命格更接近「潜力逆袭命」。现在的你不是一夜暴富型选手，而是靠稳定收入、清醒消费和持续积累慢慢翻盘的人。城市压力确实不小，但只要别被即时消费牵着走，你的财富曲线会比想象中更稳。
+                # 你的《AI人生画像报告》
+                📍 %s · %d岁 · %s | %s · 行动力观察中
 
-                2. 【同龄人段位评级】
-                结合所在城市、年龄、收入和存款情况，你目前大约打败了同城 %d%% 的同龄人。这个水平不算躺赢，但也绝不是落后，属于「有压力但有操作空间」的阶段。
+                1. 【成长类型画像】—— 慢热潜力型
+                你的画像更接近「慢热潜力型」。你不是靠一时冲劲持续推进的人，更适合在稳定节奏里慢慢建立掌控感。只要把目标拆小、减少被日常事务打断的次数，你会更容易进入持续成长的状态。
 
-                3. 【人生关键财富时间轴】
-                如果当前生活状态基本不变，你大概在 %d 岁左右摸到本地刚需房首付门槛，%d 岁前后进入相对松弛的生活阶段。%d 岁附近可能是你收入结构和职业状态明显改善的窗口期。
+                2. 【当前阶段状态】—— 调整蓄力期
+                你现在更像处在「调整蓄力期」：对未来有期待，也愿意做改变，但行动节奏偶尔会被压力、作息或琐事打散。这个阶段不用急着证明什么，先把生活节奏和小目标重新排顺，会更容易恢复能量。
 
-                4. 【一生财富走势预判】
-                未来3年，你的关键任务是稳定现金流，少做冲动消费。未来5年，如果工作能力和收入增速跟上，存款会从「看着少」变成「真能扛事」。未来10年，你会明显感受到早期积累带来的安全感，但前提是别把每次涨薪都同步升级成消费。
+                3. 【城市生活节奏参考】
+                %s 的生活节奏会影响你的时间分配和恢复速度。城市机会多时，信息和选择也会更多；节奏偏快或通勤压力偏高时，人更容易把精力消耗在日常应对上。建议你把城市环境当作背景参考，而不是给自己贴固定标签。
 
-                5. 【致命破财短板】
-                你最大的破财点不是赚得不够，而是容易被小额高频消费偷走预算。奶茶、外卖、临时购物、情绪性消费单次都不疼，但月底合起来很扎心。第二个短板是对未来大额支出缺少提前规划，容易一边焦虑一边放任。
+                4. 【你的潜力优势】
+                从你的选择看，你对自身状态是有感知的，尤其在“%s”这一项上，说明你并不是完全随波逐流的人。只要把注意力从泛泛焦虑转向具体行动，你的优势会体现在持续学习、适应变化和慢慢建立个人节奏上。
 
-                6. 【AI专属逆袭改运方案】
-                建议你先建立「固定储蓄优先」规则，工资到账当天先转出一笔安全垫，再安排消费。日常消费保持一个可承受档位，减少无感支出；职业上优先提升能直接提高议价能力的技能，别轻易相信所谓稳赚捷径。你的逆袭不靠玄学，靠的是每个月都比上个月更清醒一点。
+                5. 【容易拖慢你的习惯】
+                容易拖慢你的，可能不是能力不够，而是目标太散、恢复不足或执行断档。生活节奏一乱，人就容易用刷手机、临时消费或拖延来缓解压力。真正需要调整的是每天能稳定重复的小动作，而不是一次性做很大的改变。
 
-                本测算仅为趣味娱乐，人生财富终由自己努力决定
-                """.formatted(winRate, downPaymentAge, flatAge, shineAge);
+                6. 【7天轻量行动建议】
+                - 第1-2天：记录每天最消耗精力的3件小事，先找到状态被打断的位置。
+                - 第3-7天：根据你当前“%s”的状态，设定一个每天20分钟的小任务，完成比完美更重要。给自己留出固定休息时间，让行动和恢复形成循环。
+
+                本报告仅供休闲娱乐与自我观察，不构成任何专业建议
+                """.formatted(city, request.getAge(), status, request.getLifeRhythm(), city, savings, savings);
     }
 }

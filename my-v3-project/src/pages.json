@@ -3,26 +3,26 @@
     {
       "path": "pages/home/index",
       "style": {
-        "navigationBarTitleText": "人生财富宿命测算",
+        "navigationBarTitleText": "AI人生画像报告",
         "navigationStyle": "custom"
       }
     },
     {
       "path": "pages/form/index",
       "style": {
-        "navigationBarTitleText": "信息录入"
+        "navigationBarTitleText": "信息填写"
       }
     },
     {
       "path": "pages/loading/index",
       "style": {
-        "navigationBarTitleText": "AI测算中"
+        "navigationBarTitleText": "AI生成中"
       }
     },
     {
       "path": "pages/report/index",
       "style": {
-        "navigationBarTitleText": "测算报告"
+        "navigationBarTitleText": "人生画像报告"
       }
     },
     {
@@ -34,7 +34,7 @@
   ],
   "globalStyle": {
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "人生财富宿命测算",
+    "navigationBarTitleText": "AI人生画像报告",
     "navigationBarBackgroundColor": "#111321",
     "backgroundColor": "#111321"
   },

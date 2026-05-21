@@ -6,9 +6,9 @@ import lombok.Data;
 
 @Data
 @Builder
-@Schema(description = "财富测算响应")
+@Schema(description = "AI人生画像报告响应")
 public class CalculateResponse {
-    @Schema(description = "测算记录 ID", example = "1")
+    @Schema(description = "画像记录 ID", example = "1")
     private Long recordId;
 
     @Schema(description = "城市", example = "上海")

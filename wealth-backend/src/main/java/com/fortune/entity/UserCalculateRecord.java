@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
@@ -18,10 +17,12 @@ public class UserCalculateRecord implements Serializable {
     private String openid;
     private String city;
     private Integer age;
-    private BigDecimal monthlyIncome;
-    private BigDecimal savings;
-    private String consumeLevel;
-    private String workStatus;
+    private String currentStatus;
+    private String disposableRange;
+    private String existingSavings;
+    private String lifeRhythm;
+    private String spendingHabit;
+    private String actionStyle;
     private String summaryReport;
     private String fullReport;
     private Integer unlocked;

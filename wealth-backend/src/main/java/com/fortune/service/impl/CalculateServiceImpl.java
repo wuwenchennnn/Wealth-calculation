@@ -62,7 +62,7 @@ public class CalculateServiceImpl implements CalculateService {
                     .summaryReport(summaryReport)
                     .fullReport(fullReport)
                     .unlocked(false)
-                    .entertainmentNotice("本测算仅为趣味娱乐参考")
+                    .entertainmentNotice("本报告仅供休闲娱乐与自我观察")
                     .build());
         }
 
@@ -70,10 +70,12 @@ public class CalculateServiceImpl implements CalculateService {
         record.setOpenid(request.getOpenid());
         record.setCity(request.getCity());
         record.setAge(request.getAge());
-        record.setMonthlyIncome(request.getSalary());
-        record.setSavings(request.getMoney());
-        record.setConsumeLevel(request.getConsume());
-        record.setWorkStatus(request.getWorkType());
+        record.setCurrentStatus(request.getCurrentStatus());
+        record.setDisposableRange(request.getDisposableRange());
+        record.setExistingSavings(request.getExistingSavings());
+        record.setLifeRhythm(request.getLifeRhythm());
+        record.setSpendingHabit(request.getSpendingHabit());
+        record.setActionStyle(request.getActionStyle());
         record.setSummaryReport(summaryReport);
         record.setFullReport(fullReport);
         record.setUnlocked(0);
@@ -87,7 +89,7 @@ public class CalculateServiceImpl implements CalculateService {
                 .summaryReport(summaryReport)
                 .fullReport(null)
                 .unlocked(false)
-                .entertainmentNotice("本测算仅为趣味娱乐参考，不构成任何金融或理财建议")
+                .entertainmentNotice("本报告仅供休闲娱乐与自我观察，不构成任何专业建议")
                 .build();
     }
 
@@ -96,7 +98,7 @@ public class CalculateServiceImpl implements CalculateService {
     public CalculateResponse unlock(Long recordId, String openid) {
         UserCalculateRecord record = recordMapper.selectById(recordId);
         if (record == null || !record.getOpenid().equals(openid)) {
-            throw new BizException(ResultCode.NOT_FOUND, "测算记录不存在");
+            throw new BizException(ResultCode.NOT_FOUND, "画像记录不存在");
         }
         record.setUnlocked(1);
         record.setUpdateTime(LocalDateTime.now());
@@ -107,7 +109,7 @@ public class CalculateServiceImpl implements CalculateService {
                 .summaryReport(record.getSummaryReport())
                 .fullReport(record.getFullReport())
                 .unlocked(true)
-                .entertainmentNotice("本测算仅为趣味娱乐参考，不构成任何金融或理财建议")
+                .entertainmentNotice("本报告仅供休闲娱乐与自我观察，不构成任何专业建议")
                 .build();
     }
 }

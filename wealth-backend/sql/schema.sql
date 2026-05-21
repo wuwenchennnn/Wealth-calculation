@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS wealth_fortune DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE wealth_fortune;
+CREATE DATABASE IF NOT EXISTS life_profile DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE life_profile;
 
 DROP TABLE IF EXISTS city_cost;
 CREATE TABLE city_cost (
@@ -22,10 +22,12 @@ CREATE TABLE user_calculate_record (
     openid VARCHAR(128) NOT NULL COMMENT '用户openid',
     city VARCHAR(64) NOT NULL COMMENT '城市',
     age INT NOT NULL COMMENT '年龄',
-    monthly_income DECIMAL(12,2) NOT NULL COMMENT '月收入',
-    savings DECIMAL(12,2) NOT NULL COMMENT '存款',
-    consume_level VARCHAR(32) NOT NULL COMMENT '消费档位',
-    work_status VARCHAR(32) NOT NULL COMMENT '工作状态',
+    current_status VARCHAR(64) NOT NULL COMMENT '当前状态',
+    disposable_range VARCHAR(64) NOT NULL COMMENT '每月可支配区间',
+    existing_savings VARCHAR(64) NOT NULL COMMENT '现有积蓄',
+    life_rhythm VARCHAR(64) NOT NULL COMMENT '生活节奏',
+    spending_habit VARCHAR(64) NOT NULL COMMENT '消费习惯',
+    action_style VARCHAR(64) NOT NULL COMMENT '行动力自评',
     summary_report TEXT NOT NULL COMMENT '精简报告',
     full_report MEDIUMTEXT NOT NULL COMMENT '完整报告',
     unlocked TINYINT NOT NULL DEFAULT 0 COMMENT '是否解锁完整版 0否 1是',
@@ -33,7 +35,7 @@ CREATE TABLE user_calculate_record (
     update_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
     KEY idx_openid_create_time (openid, create_time),
     KEY idx_city (city)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户测算记录表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户AI人生画像记录表';
 
 INSERT INTO city_cost (city_name, house_price_avg, rent_price_avg, meal_cost_monthly, transport_cost, peer_avg_income, consume_level_factor) VALUES
 ('北京', 65000, 5200, 2600, 500, 11500, 1.35),

@@ -1,20 +1,22 @@
 <template>
   <view class="container home">
     <view class="hero">
-      <view class="tag">人生财富报告 - 智能推算</view>
-      <view class="title">AI财富画像</view>
-      <view class="desc">无需登录，输入6项极简信息，AI结合城市生活成本，生成你的专属财富报告。</view>
+      <view class="tag">休闲娱乐 · 趣味测评</view>
+      <view class="title">人生潜力研究所</view>
+      <view class="desc">AI 基于城市环境、生活节奏与行为习惯，生成你的《AI人生画像报告》。</view>
     </view>
 
     <view class="card panel">
       <view class="panel-title">你将获得</view>
-      <view class="item">财富命格判定</view>
-      <view class="item">同龄人段位评级</view>
-      <view class="item">人生关键财富时间轴</view>
-      <view class="item">AI专属逆袭方案</view>
+      <view class="item">成长类型画像</view>
+      <view class="item">当前阶段状态</view>
+      <view class="item">城市生活节奏参考</view>
+      <view class="item">潜力优势分析</view>
+      <view class="item">习惯短板提醒</view>
+      <view class="item">7天轻量行动建议</view>
     </view>
 
-    <view class="primary-btn" @tap="start">一键开始测算</view>
+    <view class="primary-btn" @tap="start">开始趣味测评</view>
     <BannerAd :unit-id="adConfig.bannerAdUnitId" />
   </view>
 </template>

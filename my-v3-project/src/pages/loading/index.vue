@@ -1,7 +1,7 @@
 <template>
   <view class="container loading-page">
     <LoadingMagic :text="tips[current]" />
-    <view class="subtle hint">正在结合城市生活成本与AI报告模型，请勿重复提交。</view>
+    <view class="subtle hint">正在结合城市生活节奏与行为习惯，请勿重复提交。</view>
   </view>
 </template>
 
@@ -12,10 +12,10 @@ import { calculate } from '../../api/wealth';
 
 const current = ref(0);
 const tips = [
-  '正在读取城市生活压力指数...',
-  '正在匹配同龄人财富段位...',
-  '正在生成你的财富时间轴...',
-  '正在压缩30%精简报告...'
+  '正在读取城市生活节奏...',
+  '正在分析你的行为习惯...',
+  '正在生成成长类型画像...',
+  '正在整理7天轻量行动建议...'
 ];
 
 onMounted(async () => {

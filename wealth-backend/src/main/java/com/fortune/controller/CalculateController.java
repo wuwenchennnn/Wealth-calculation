@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
-@Tag(name = "财富测算", description = "游客财富测算、报告解锁和 AI 连通性诊断")
+@Tag(name = "AI人生画像", description = "游客趣味测评、报告解锁和 AI 连通性诊断")
 @Validated
 @RestController
 @RequestMapping("/api/calculate")
@@ -32,7 +32,7 @@ public class CalculateController {
         this.aiService = aiService;
     }
 
-    @Operation(summary = "提交游客财富测算", description = "无需微信登录，根据用户基础信息生成财富测算结果")
+    @Operation(summary = "提交游客趣味测评", description = "无需微信登录，根据城市、生活节奏和行为习惯生成 AI 人生画像报告")
     @PostMapping
     public ApiResponse<CalculateResponse> calculate(@RequestBody @Valid CalculateRequest request) {
         return ApiResponse.success(calculateService.calculate(request));

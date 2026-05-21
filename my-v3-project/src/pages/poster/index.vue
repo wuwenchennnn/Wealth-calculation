@@ -1,7 +1,7 @@
 <template>
   <view class="container poster-page">
     <view class="title">分享海报</view>
-    <view class="notice">生成长图后，可保存完整建议到相册。</view>
+    <view class="notice">生成长图后，可保存完整趣味画像到相册。</view>
 
     <view class="preview-card card" :style="{ minHeight: previewHeight + 'rpx' }">
       <canvas
@@ -106,15 +106,15 @@ const drawBackground = (ctx, w, h) => {
 const drawHeader = (ctx, padding) => {
   ctx.setFillStyle('#f7c873');
   ctx.setFontSize(15);
-  ctx.fillText('青年趣味财富测算', padding, 34);
+  ctx.fillText('休闲娱乐 · 趣味测评', padding, 34);
 
   ctx.setFillStyle('#ffffff');
   ctx.setFontSize(25);
-  ctx.fillText('人生财富宿命报告', padding, 68);
+  ctx.fillText('AI人生画像报告', padding, 68);
 
   ctx.setFillStyle('rgba(255, 255, 255, 0.62)');
   ctx.setFontSize(12);
-  ctx.fillText('无需登录 · AI生成 · 娱乐参考', padding, 91);
+  ctx.fillText('AI生成 · 自我观察 · 娱乐参考', padding, 91);
 };
 
 const drawUserCard = (ctx, x, y, w) => {
@@ -159,7 +159,7 @@ const drawFooter = (ctx, padding, h) => {
 
   ctx.setFillStyle('rgba(255, 255, 255, 0.72)');
   ctx.setFontSize(12);
-  ctx.fillText('本测算仅为趣味娱乐参考', padding, h - 42);
+  ctx.fillText('本报告仅供休闲娱乐与自我观察', padding, h - 42);
 
   ctx.setFillStyle('rgba(255, 255, 255, 0.44)');
   ctx.setFontSize(10);
@@ -192,9 +192,9 @@ const buildPosterSections = () => {
 
 const shouldSkipLine = (line) => {
   return line.startsWith('📍')
-    || line.includes('你的《人生财富宿命报告》')
+    || line.includes('你的《AI人生画像报告》')
     || line.includes('完整6大模块报告待解锁后查看')
-    || line.includes('本测算仅为趣味娱乐');
+    || line.includes('本报告仅为休闲娱乐');
 };
 
 const isSectionTitle = (line) => /^\d+[.、]/.test(line) || /【.*】/.test(line);
@@ -244,7 +244,7 @@ const compactText = (text = '', maxLength = 60) => {
 const extractMeta = () => {
   const text = report.value.fullReport || report.value.summaryReport || '';
   const metaLine = text.split('\n').map((line) => cleanLine(line)).find((line) => line.startsWith('📍'));
-  return metaLine || `${report.value.city || '你的城市'} · 专属财富报告`;
+  return metaLine || `${report.value.city || '你的城市'} · AI人生画像报告`;
 };
 
 const cleanLine = (line = '') => line

@@ -1,6 +1,6 @@
-# AI财富画像小程序
+# AI人生画像报告小程序
 
-一个面向微信小程序场景的 AI 趣味财富画像项目。用户填写城市、年龄、税后月收入（元）、当前存款（元）、消费档位、工作状态等信息后，系统会调用后端 AI 能力生成《人生财富报告》，并支持广告解锁完整版、生成分享海报等玩法。
+一个面向微信小程序场景的休闲娱乐趣味测评项目。用户填写城市、年龄、当前状态、每月可支配区间、现有积蓄、生活节奏、消费习惯、行动力自评等信息后，系统会调用后端 AI 能力生成《AI人生画像报告》，并支持广告解锁完整版、生成分享海报等玩法。
 
 本项目包含两个主要工程：
 
@@ -11,27 +11,27 @@
 
 ### 小程序前端
 
-- 首页展示项目介绍、标语“人生财富报告 - 智能推算”和测算入口
-- 表单页填写 6 项财富画像信息，其中税后月收入、当前存款以元为单位
+- 首页展示“人生潜力研究所”和趣味测评入口
+- 表单页填写 8 项成长画像信息
 - 城市下拉选择，支持已收录城市和“其他城市”兜底
-- AI 测算加载页，展示测算过程动效
+- AI 生成加载页，展示报告生成过程动效
 - 报告页展示摘要报告和完整报告
 - 激励视频广告解锁完整 6 大模块报告
 - 插屏广告、Banner 广告基础接入
-- Canvas 生成财富报告分享海报
+- Canvas 生成 AI 人生画像分享海报
 - 海报支持保存到相册
 - 游客模式访问，无需微信授权登录
 
 ### 后端服务
 
-- 城市生活成本数据查询
+- 城市生活环境参考数据查询
 - 已收录城市列表接口
-- 未收录城市使用“其他城市”成本兜底
-- DeepSeek/OpenAI-compatible AI 报告生成
+- 未收录城市使用“其他城市”数据兜底
+- DeepSeek/OpenAI-compatible AI 人生画像报告生成
 - AI 调用失败时自动回退本地 mock 报告
-- 用户每日测算次数限制
+- 用户每日生成次数限制
 - 请求频率限制
-- 测算记录落库
+- 画像记录落库
 - 广告解锁完整报告
 - Swagger/OpenAPI 接口文档
 - 本地开发配置和正式环境配置分离
@@ -90,6 +90,12 @@ source wealth-backend/sql/schema.sql;
 
 或复制 `wealth-backend/sql/schema.sql` 内容到数据库客户端执行。
 
+默认数据库名：
+
+```text
+life_profile
+```
+
 ### 2. 配置后端本地开发文件
 
 后端支持两个配置文件：
@@ -137,9 +143,10 @@ my-v3-project/dist/dev/mp-weixin
 - `WECHAT_APP_ID`：微信小程序 AppID
 - `WECHAT_APP_SECRET`：微信小程序 AppSecret
 
-前端广告位可通过 `.env.local` 配置：
+前端接口地址和广告位可通过 `.env.local` 配置：
 
 ```env
+VITE_API_BASE_URL=http://你的本地IP:8080/api
 VITE_REWARD_AD_UNIT_ID=你的激励广告ID
 VITE_INTERSTITIAL_AD_UNIT_ID=你的插屏广告ID
 VITE_BANNER_AD_UNIT_ID=你的Banner广告ID
@@ -161,13 +168,13 @@ VITE_BANNER_AD_UNIT_ID=你的Banner广告ID
 GET /api/city/list
 ```
 
-### 城市生活成本
+### 城市生活环境参考
 
 ```text
 GET /api/city/cost?city=北京
 ```
 
-### AI 测算
+### AI 人生画像生成
 
 ```text
 POST /api/calculate
@@ -180,10 +187,12 @@ POST /api/calculate
   "openid": "guest_xxx",
   "city": "北京",
   "age": 25,
-  "salary": 12000,
-  "money": 50000,
-  "consume": "普通型",
-  "workType": "稳定上班"
+  "currentStatus": "稳定上班",
+  "disposableRange": "6000-10000",
+  "existingSavings": "1万-5万",
+  "lifeRhythm": "忙但还能掌控",
+  "spendingHabit": "日常均衡型",
+  "actionStyle": "计划很多但执行一般"
 }
 ```
 
@@ -205,7 +214,7 @@ POST /api/calculate/unlock
 
 ## 合规说明
 
-本项目生成内容仅用于趣味娱乐展示，不构成任何金融、投资、理财建议。报告中应持续保留娱乐参考提示，避免引导用户做出真实投资或借贷决策。
+本项目定位为“休闲娱乐 - 趣味测评”，生成内容仅用于娱乐展示和自我观察，不构成职业、心理、金融、投资、医疗等专业建议。报告中应持续保留娱乐参考提示，避免封建迷信、命理占卜、承诺收益、专业诊断或暗示能够预测未来。
 
 # 使用规范
 

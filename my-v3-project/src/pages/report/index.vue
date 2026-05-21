@@ -1,7 +1,7 @@
 <template>
   <view class="container">
-    <view class="title">你的财富宿命报告</view>
-    <view class="notice">本测算仅为趣味娱乐参考，不构成任何金融或理财建议。</view>
+    <view class="title">你的AI人生画像报告</view>
+    <view class="notice">本报告仅为休闲娱乐和自我观察参考，不构成任何专业建议。</view>
 
     <view class="report-list">
       <view
@@ -15,7 +15,7 @@
 
     <view v-if="!report.unlocked" class="unlock-card card">
       <view class="unlock-title">完整6大模块报告已生成</view>
-      <view class="subtle">观看激励视频广告后，永久解锁完整报告与高清分享海报。</view>
+      <view class="subtle">观看激励视频广告后，永久解锁完整人生画像与高清分享海报。</view>
       <view class="primary-btn" @tap="unlock">观看广告解锁完整报告</view>
     </view>
 
